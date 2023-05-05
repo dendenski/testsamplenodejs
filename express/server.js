@@ -1,6 +1,7 @@
-'use strict';
+//'use strict';
 const express = require('express');
 //const mssql = require('mssql');
+const cheerio = require("cheerio");
 const session = require('express-session');
 const path = require('path');
 const serverless = require('serverless-http');

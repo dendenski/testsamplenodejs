@@ -7,8 +7,6 @@ const bodyParser = require('body-parser');
 
 
 const router = express.Router();
-var index = require('./routes/index');
-router.use('/', index)
 
 // router.get('/', (req, res) => {
 //   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -20,7 +18,8 @@ router.use('/', index)
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-// app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
+app.use(express.static(path.join(__dirname, 'public')));
 module.exports = app;
 module.exports.handler = serverless(app);

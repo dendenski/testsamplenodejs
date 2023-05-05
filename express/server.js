@@ -5,9 +5,9 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 const mssql = require('mssql');
-const session = require('express-session');
-const cheerio = require("cheerio");
-const fs = require('fs');
+// const session = require('express-session');
+// const cheerio = require("cheerio");
+// const fs = require('fs');
 
 const router = express.Router();
 router.get('/', (req, res) => {

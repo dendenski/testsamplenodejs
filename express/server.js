@@ -3,7 +3,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
-
+const mssql = require('mssql');
 const router = express.Router();
 router.get('/', (req, res) => {
   console.log("testing");

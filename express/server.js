@@ -1,16 +1,14 @@
 //'use strict';
 const express = require('express');
-//const ms_sql = require('mssql');
-//const cheerio = require("cheerio");
+const mssql = require('mssql');
+const cheerio = require("cheerio");
+const fs = require('fs');
 const session = require('express-session');
 const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
-// 
-// const cheerio = require("cheerio");
-// const fs = require('fs');
 
 const router = express.Router();
 router.get('/', (req, res) => {
@@ -25,6 +23,13 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+
+
+app.post('/auth', function(request, response) {
+	console.log("test");
+});
+
+
 app.use(express.static('public'));
 module.exports = app;
 module.exports.handler = serverless(app);
